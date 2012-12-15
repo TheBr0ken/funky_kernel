@@ -1911,8 +1911,11 @@ static struct regulator *vigor_reg_8058_l23 = NULL;
 static struct regulator *vigor_reg_8058_l24 = NULL;
 static struct regulator *vigor_reg_8058_l15 = NULL;
 //static struct regulator *vigor_reg_8901_lvs2 = NULL;
+static struct regulator *vigor_reg_8901_l6 = NULL;
 static struct regulator *vigor_reg_8058_l8 = NULL;
 //static struct regulator *vigor_reg_8901_usb_otg = NULL;
+static struct regulator *vigor_reg_8058_l9 = NULL;
+
 
 #ifdef CONFIG_S5K3H2YX
 static int vigor_config_camera_on_gpios(void);
@@ -2890,6 +2893,7 @@ static struct msm_camera_sensor_info msm_camera_sensor_mt9d015_data = {
 	.camera_power_on = Vigor_mt9d015_vreg_on,
 	.camera_power_off = Vigor_mt9d015_vreg_off,
 	.camera_clk_switch = Vigor_seccam_clk_switch,
+	.vcm_enable	= 0,
 	.pdata = &msm_camera_device_data_web_cam, /* For front CAM */
 	.resource	= msm_camera_resources,
 	.num_resources	= ARRAY_SIZE(msm_camera_resources),
@@ -2897,7 +2901,7 @@ static struct msm_camera_sensor_info msm_camera_sensor_mt9d015_data = {
 	.sensor_platform_info = &sensor_mt9d015_board_info,
 	.mirror_mode = 1,
 	.csi_if		= 1,
-	.dev_node	= 1,
+	.dev_node	= 1
 };
 #endif	/* CONFIG_MT9D015 */
 static void __init msm8x60_init_camera(void)
@@ -7974,6 +7978,7 @@ static struct platform_device *vigor_devices[] __initdata = {
 	&msm_device_rng,
 #endif
 
+	&msm_tsens_device,
 	&msm_rpm_device,
 
 #ifdef CONFIG_BATTERY_MSM8X60
@@ -8422,7 +8427,6 @@ static void __init vigor_init(void)
 /* 0x40400000~0x42A00000 is 38MB for SF/AUDIO/FB PMEM */
 /* 0x48800000~0x7CC00000 is 836MB for APP */
 /* 0x7CC00000~0x80000000 is 52MB for ADSP PMEM */
-
 #define SIZE_ADDR1	  0x30400000
 
 static void __init vigor_fixup(struct machine_desc *desc, struct tag *tags,
