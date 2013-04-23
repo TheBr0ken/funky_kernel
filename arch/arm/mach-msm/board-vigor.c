@@ -1911,10 +1911,10 @@ static struct regulator *vigor_reg_8058_l23 = NULL;
 static struct regulator *vigor_reg_8058_l24 = NULL;
 static struct regulator *vigor_reg_8058_l15 = NULL;
 //static struct regulator *vigor_reg_8901_lvs2 = NULL;
-static struct regulator *vigor_reg_8901_l6 = NULL;
+//static struct regulator *vigor_reg_8901_l6 = NULL;
 static struct regulator *vigor_reg_8058_l8 = NULL;
 //static struct regulator *vigor_reg_8901_usb_otg = NULL;
-static struct regulator *vigor_reg_8058_l9 = NULL;
+//static struct regulator *vigor_reg_8058_l9 = NULL;
 
 
 #ifdef CONFIG_S5K3H2YX
@@ -7977,8 +7977,6 @@ static struct platform_device *vigor_devices[] __initdata = {
 #ifdef CONFIG_HW_RANDOM_MSM
 	&msm_device_rng,
 #endif
-
-	&msm_tsens_device,
 	&msm_rpm_device,
 
 #ifdef CONFIG_BATTERY_MSM8X60
